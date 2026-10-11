@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noor App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Amiri:wght@700&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Noor App</h1>
+
+  <div class="clock">
+    <div id="time"></div>
+    <div id="dateLine"></div>
+    <div id="hijri"></div>
+  </div>
+
+  <nav>
+    <button data-tab="namaz">Namaz</button>
+    <button data-tab="quran">Quran</button>
+    <button data-tab="tasbeeh">Tasbeeh</button>
+    <button data-tab="duayen">Duayen</button>
+    <button data-tab="qibla">Qibla</button>
+  </nav>
+
+  <section class="tab" id="namaz">
+    <h2>Namaz</h2>
+
+    <div class="nextBox">
+      <div class="nextLabel">Agli namaz</div>
+      <div id="nextName"></div>
+      <div id="nextCount"></div>
+    </div>
+
+    <ul id="prayerList"></ul>
+
+    <div class="azanBox">
+      <button id="azanToggle">Azan chalu karein</button>
+      <button id="azanTest" class="alt">Test</button>
+      <button id="azanStop" class="alt">Rok dein</button>
+      <p id="azanStatus"></p>
+    </div>
+
+    <div class="fileRow">
+      <label>Azan ki file (sab namazon ke liye)
+        <input type="file" id="azanFile" accept="audio/*">
+      </label>
+      <label>Fajr ki azan (agar alag ho, optional)
+        <input type="file" id="azanFajrFile" accept="audio/*">
+      </label>
+    </div>
+  </section>
+
+  <section class="tab" id="quran">
+    <h2>Quran</h2>
+    <select id="quranSelect" aria-label="Surah chunein"></select>
+
+    <div class="toggles">
+      <label><input type="checkbox" id="showUr" checked> Urdu</label>
+      <label><input type="checkbox" id="showEn" checked> English</label>
+    </div>
+
+    <div id="quranBody"></div>
+
+    <small class="credit">
+      Arabic: Tanzil.net (Uthmani) · Urdu: Fateh Muhammad Jalandhry · English: Saheeh International · Data: AlQuran.cloud
+    </small>
+  </section>
+
+  <section class="tab" id="tasbeeh">
+    <h2>Tasbeeh aur Wazaif</h2>
+    <p>Jo parhna ho us par click karein:</p>
+    <div class="wlist" id="wlist"></div>
+
+    <h3 id="wnameUr" class="ur"></h3>
+    <h3 id="wname"></h3>
+    <p class="arabic" id="arabic"></p>
+
+    <p class="count" id="count">0</p>
+    <p class="round" id="round"></p>
+    <p class="msg" id="msg"></p>
+
+    <button id="ginti">Ginti</button>
+    <button id="reset">Reset</button>
+
+    <div class="fazilat">
+      <b class="ur">فضیلت</b> <b>Virtue</b>
+      <p class="ur" id="fazilatUr"></p>
+      <p id="fazilatEn"></p>
+      <small id="src"></small>
+    </div>
+  </section>
+
+  <section class="tab" id="duayen">
+    <h2>Masnoon Duayen</h2>
+    <div id="duaList"></div>
+    <small class="credit">
+      Arabic text apni bharosay ki kitab (jaise Hisnul Muslim) se zaroor mila lein.
+    </small>
+  </section>
+
+  <section class="tab" id="qibla">
+    <h2>Qibla</h2>
+    <select id="qiblaCity" aria-label="Shehar chunein"></select>
+
+    <div class="compass">
+      <svg viewBox="0 0 200 200" width="230" height="230" role="img" aria-label="Qibla ka teer">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#E8C25A" stroke-width="3"/>
+        <text x="100" y="26" text-anchor="middle" font-size="16" fill="#F3D77F">N</text>
+        <text x="100" y="186" text-anchor="middle" font-size="16" fill="#F3D77F">S</text>
+        <text x="182" y="106" text-anchor="middle" font-size="16" fill="#F3D77F">E</text>
+        <text x="18" y="106" text-anchor="middle" font-size="16" fill="#F3D77F">W</text>
+        <g id="qiblaArrow">
+          <path d="M100 34 L114 100 L100 90 L86 100 Z" fill="#E8C25A"/>
+          <circle cx="100" cy="100" r="6" fill="#F5EFD8"/>
+        </g>
+      </svg>
+    </div>
+
+    <p id="qiblaText" class="qText"></p>
+    <p id="qiblaDist" class="qDist"></p>
+
+    <small class="credit">
+      Teer ka upar wala hissa North hai. Phone ke compass se North dhoondein, phir wahan se is angle tak ghari ki simt ghoomein. Masjid ki mehrab ki simt bhi dekh lein.
+    </small>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="quran.js"></script>
+  <script src="namaz.js"></script>
+  <script src="azan.js"></script>
+  <script src="qibla.js"></script>
+  <script src="duas.js"></script>
+  <script src="clock.js"></script>
+</body>
+</html>
